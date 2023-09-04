@@ -2,6 +2,7 @@
 
 let secretNumber = Math.trunc(Math.random() * 100) + 1;
 let score = 20;
+let highscore = 0;
 
 // Display message function
 const displayMessage = function (message) {
@@ -54,6 +55,12 @@ document.querySelector(".check").addEventListener("click", function () {
   else if (guess === secretNumber) {
     displayMessage("Correct Number! 🎉");
 
+    // Change highscore
+    if (score > highscore) {
+      highscore = score;
+    }
+    document.querySelector(".highscore").textContent = highscore;
+
     // Change CSS style
     winGameStyle();
   }
@@ -76,4 +83,6 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   reloadGame();
+
+
 });
